@@ -5,6 +5,19 @@ const array_posts = require("../data/posts");
 
 //Index
 function index(req, res) {
+  if (req.query.tag) {
+    const not_found = false;
+    const { tag } = req.query;
+    const posts_filtered = array_posts.filter((post) => {
+      return post.tags.includes(tag);
+    });
+
+    if (posts_filtered.length === 0) {
+      return res.status(404).json({ messaggio: "Nessun tag corrispondente" });
+    }
+
+    return res.json(posts_filtered);
+  }
   return res.json(array_posts);
 }
 

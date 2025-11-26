@@ -1,5 +1,5 @@
 //import di express
-const express = requirer("express");
+const express = require("express");
 //ottenimento del router
 const router = express.Router();
 
@@ -25,4 +25,4 @@ router.patch("/:id", post_controller.modify);
 router.delete("/:id", post_controller.destroy);
 
 //export del router (necessario a server.js affinchè il router stesso possa ricevere un prefisso per le rotte)
-module.export = router;
+module.exports = router;
