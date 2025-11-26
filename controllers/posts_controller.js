@@ -25,6 +25,9 @@ function index(req, res) {
 function show(req, res) {
   //La ricerca del singolo post avviene tramite parametro dinamico(in questo caso l'id)
   const post = array_posts.find((post) => post.id === parseInt(req.params.id));
+  if (!post) {
+    return res.status(404).json({ errore: "post non trovato" });
+  }
   return res.json(post);
 }
 
