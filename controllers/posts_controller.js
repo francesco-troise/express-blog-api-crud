@@ -33,8 +33,15 @@ function show(req, res) {
 
 //Store
 function store(req, res) {
-  console.log(req.body);
-  res.send(`Ricezione avvenuta di: ${req.body}`);
+  const newPost = {
+    ...req.body,
+    id: array_posts[array_posts.length - 1].id + 1,
+  };
+  array_posts.push(newPost);
+  res.status(201).json({
+    messaggio: "Post creato con successo",
+    newPost,
+  });
 }
 
 //Update
