@@ -7,6 +7,9 @@ const app = express();
 //Definizione della porta locale su cui girarerà il server
 const PORT = 3000;
 
+//Parsing globale dei dati in ingresso
+app.use(express.json());
+
 //Import del router
 const posts_router = require("./routers/posts_router");
 

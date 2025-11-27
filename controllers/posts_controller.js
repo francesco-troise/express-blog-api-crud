@@ -33,7 +33,8 @@ function show(req, res) {
 
 //Store
 function store(req, res) {
-  return res.send("Aggiunta effettuata!");
+  console.log(req.body);
+  res.send(`Ricezione avvenuta di: ${req.body}`);
 }
 
 //Update
