@@ -1,4 +1,5 @@
 //import dei dati
+const posts = require("../data/posts");
 const array_posts = require("../data/posts");
 
 //Le seguenti sono funizioni da esportare e richiamare nel router, per abbinare ad un percorso una determinata azione
@@ -46,7 +47,26 @@ function store(req, res) {
 
 //Update
 function update(req, res) {
-  res.send("Modifica effettuata");
+  //console.log(req.params.id);
+
+  postUpdate = array_posts.find((post) => post.id === Number(req.params.id));
+
+  if (!postUpdate) {
+    res.status(404);
+    return res.json({
+      error: "Not Found",
+      messaggio: "Pizza non trovata",
+    });
+  }
+
+  postUpdate.title = req.body.title;
+  postUpdate.content = req.body.content;
+  postUpdate.image = req.body.image;
+  postUpdate.tags = req.body.tags;
+
+  console.log(array_posts);
+
+  res.json(`Post aggiornato: ${postUpdate}`);
 }
 
 //Modify
