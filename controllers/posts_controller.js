@@ -47,15 +47,13 @@ function store(req, res) {
 
 //Update
 function update(req, res) {
-  //console.log(req.params.id);
-
   postUpdate = array_posts.find((post) => post.id === Number(req.params.id));
 
   if (!postUpdate) {
     res.status(404);
     return res.json({
       error: "Not Found",
-      messaggio: "Pizza non trovata",
+      messaggio: "Post non trovato",
     });
   }
 
@@ -70,9 +68,7 @@ function update(req, res) {
 }
 
 //Modify
-function modify(req, res) {
-  res.send("Modifica marginale effettuata");
-}
+function modify(req, res) {}
 
 //Destroy
 function destroy(req, res) {
